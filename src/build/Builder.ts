@@ -8,7 +8,7 @@ import { Element } from '../core/Element'
  * - parts ('Loca Bor' has 2 parts)
  * - lenghts (4 and 3 in the example above)
  * - starting letters (l and b)
- * - marcov chain of n-grams (loc, oca, bor) with counters of all letters
+ * - marcov chain of n-grams as a trie map (loc, oca, bor) with counters of all letters
  */
 export class Builder {
   private optimized = false

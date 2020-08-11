@@ -14,8 +14,14 @@ export class Generator {
   constructor(private chain: Chain) { }
 
   /**
-   * Randomly generates the next name
+   * Randomly generates a new name.
+   *
+   * @remarks if multipleParts is true can return names like 'Abo Cordok' where the number of parts (2 in this example)
+   * depends on the training data.
+   *
    * @param multipleParts true to generate multiple parts names, false otherwise
+   *
+   * @returns a string representing a random name generated based on the model
    */
   next(multipleParts = false): string {
     const partsCount = multipleParts ? Number(this.nextToken(ChainKeys.Parts)) : 1
