@@ -32,7 +32,7 @@ export class Builder {
    */
   from(tokens: string[], weight = 1): Builder {
     for (let name of tokens) {
-      let parts = name.split(/\s+/g)
+      const parts = name.split(/\s+/g)
       this.incrementLink(ChainKeys.Parts, [String(parts.length)], weight)
 
       for (let namePart of parts) {
@@ -118,7 +118,7 @@ export class Builder {
 
   private incrementValue(element: Element, key: string, value: number): number {
     const existing = element[key] as number
-    let updated = existing + value
+    const updated = existing + value
     element[key] = updated
     return updated
   }

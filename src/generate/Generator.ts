@@ -34,8 +34,10 @@ export class Generator {
         const character = this.nextToken(ChainKeys.Elements, characters)
         characters.push(character)
       }
-      const name = this.capitalize(characters.join(''))
-      parts.push(name)
+      const rawName = characters.join('')
+      const cleanedName = this.clean(rawName)
+      const capitalizedName = this.capitalize(cleanedName)
+      parts.push(capitalizedName)
     }
     return parts.join(' ')
   }
@@ -74,5 +76,12 @@ export class Generator {
 
   private capitalize(name: string): string {
     return name[0].toUpperCase() + name.substr(1)
+  }
+
+  private clean(name: string) {
+    if (name.match(/.+?[\-']/)) {
+      return name.substr(0, name.length - 1)
+    }
+    return name
   }
 }
