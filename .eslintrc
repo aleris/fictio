@@ -1,0 +1,10 @@
+{
+  "extends": [
+  ],
+  "rules": {},
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}

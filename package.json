@@ -7,9 +7,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "webpack --mode=production && node ./dist/build.js",
-    "example": "webpack --mode=production && node ./dist/example.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --mode=production && node ./dist/build.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -17,12 +16,21 @@
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-transform-async-to-generator": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.6.0",
     "eslint-config-typescript": "^3.0.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "jest": "^26.3.0",
+    "jest-mock-extended": "^1.0.9",
+    "ts-jest": "^26.1.4",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"

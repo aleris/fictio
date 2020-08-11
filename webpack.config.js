@@ -9,8 +9,7 @@ module.exports = {
     target: 'node',
 
     entry: {
-        'build': ['./build.ts'],
-        'example': ['./example.ts']
+        'build': ['./build.ts']
     },
     
     output: {
@@ -31,10 +30,12 @@ module.exports = {
             {
                 test: /\.ts$/,
                 exclude: /node_modules/,
-                loaders: ['babel-loader']
+                use:  'babel-loader'
             }
         ]
     },
 
-    plugins: []
+    plugins: [],
+
+    devtool: 'cheap-module-source-map'
 }

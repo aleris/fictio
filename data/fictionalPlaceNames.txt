@@ -55,7 +55,7 @@ Artime
 Asgard
 Ashan
 Ashina
-Assassin's Creed Universe
+Assassin's Creed
 Athas
 Athena
 Athos
@@ -112,7 +112,7 @@ Chorus
 Chthon
 Chu
 Cittagazze
-City of Bones
+Bones
 Cloud
 Cocoon
 Columbia
@@ -134,14 +134,13 @@ Damar
 Dark Nexus
 Darkover
 Darwin
-Dave and Alvin
-Death City
-Death Wind
+Dave
+Alvin
 Dekuuna
 Deltora
 Demacia
 Demeter
-Demiplane of Dread
+Demiplane
 Demonata
 Deponia
 Dereth
@@ -161,8 +160,7 @@ Dreamlands
 Drool
 Druidia
 Dum Land
-Dying Earth
-Dyson sphere
+Dyson
 Earea
 Earth
 Earthland
@@ -183,9 +181,9 @@ Elrios
 Ember
 Emelan
 Emm Luther
-Empire of the Celestial Dragons
+Celestial Dragons
 Encantadia
-Enchanted Lands
+Enchanted
 Enroth
 Enwor
 Eo
@@ -209,7 +207,7 @@ Fablehaven
 Faelands
 Faerie
 Fairyland
-Fallout Universe
+Fallout
 Faltha
 Fantasia
 Fantastica
@@ -219,7 +217,6 @@ Fatlend
 FernGully
 Fhloston
 Fillory
-Film and television
 Final Fantasys
 Finisterre
 Fionavar
@@ -307,7 +304,8 @@ K'aresh
 Kaelarot
 Kamigawa
 Kandrakar
-Kanto and Kalos
+Kanto
+Kalos
 Kara-Tur
 Karava
 Karse
@@ -340,17 +338,15 @@ Kyrian
 La-Metal
 Lagash
 Lamarckia
-Land
-Land of Shadow
-Land of the Dead
+Shadow
 Landover
-Lands of the Diamond Throne
+Diamond Throne
 Lavondyss
 Layonara
-Lazulis Island
+Lazulis
 Leera
 Legend
-Lejendary Earth
+Lejendary
 Lethe
 Lilliput
 Limbo
@@ -381,7 +377,7 @@ Mallus
 Malurok
 MAR Heaven
 Marklar
-Matoran Universe
+Matoran
 Mau
 Medea
 Medici
@@ -389,7 +385,7 @@ Mejare
 Melancholia
 Melmac
 Mermaid
-Metal Gear Solid Universe
+Metal Gear Solid
 Metaluna
 Mewni
 Mid-World
@@ -488,8 +484,6 @@ Orthe
 Osiris
 Osten Ard
 Oth
-Other lists
-Outer Gods
 Outworld
 Overland
 Overworld
@@ -498,9 +492,9 @@ Palamok
 Pandarve
 Pandemia
 Pandora
-Pandyssian Continent
+Pandyssian
 Panem
-Parallel Earths
+Parallel
 Parthoris
 Pax
 Peaceland
@@ -511,16 +505,15 @@ Pellinor
 Pellucidar
 Pendor
 Perdide
-Perilous Realm
+Perilous
 Pern
 Petaybee
 Pharagos
 Picon
-Planet Claire
-Planet Lucie
-Planet of Blue and Red
-Planet of Rat
-Polyphemus and Pandora
+Claire
+Lucie
+Rat
+Polyphemus
 Pop Star
 Prydain
 Prysmos
@@ -648,40 +641,33 @@ Terra Obscura
 Tethe'alla
 Thalassa
 Thargoidia
-The
-The Abarat
-The City
-The Continent
-The Dream Archipelago
-The Edge
-The Enchanted Forest
-The Ether
-The Five Great Nations
-The Four Corners of Civilisation
-The Four Lands
-The Four Nations
-The Hidden Land
-The Homelands
-The Key of Destiny
-The Kingdom of Loathing
-The Land
-The Lost Cities
-The Mirror Dimension
-The Multiverse
-The Ninth
-The Other Realm
-The Realm
-The Realm of the Elderlings
-The Shadow Isles
-The Third from the Black Hole
-The Uncharted Territories
-The Underground
-The Unknown
-The Upside down
-The Verse
-The Void
-The Wizarding
-The Young Kingdoms
+Abarat
+Dream Archipelago
+Edge
+Enchanted Forest
+Ether
+Five Great Nations
+Four Lands
+Four Nations
+Hidden Land
+Homelands
+Destiny
+Loathing
+Land
+Lost Cities
+Mirror Dimension
+Multiverse
+Ninth
+Elderlings
+Shadow Isles
+Uncharted Territories
+Underground
+Unknown
+Upside
+Verse
+Void
+Wizarding
+Young Kingdoms
 Thedas
 Thessia
 Thieves
@@ -709,14 +695,14 @@ Tristane
 Trodain
 Tschai
 Tuchanka
-Twilight Realm
+Twilight
 Twinsun
 Tyria
 Ulgethon
 Ulldart
 Ultron
 Underland
-Unified Realm
+Unified
 Unova
 Urak
 Uresia
@@ -749,17 +735,12 @@ Widge
 Wilderlands
 Witch
 Wonderland
-World of the Living
-World of the Three Moons
-World of Tiers
-World of Two Moons
-Worlds of Myst
 Worlorn
 Wormwood
 Wraeclast
 Xanadu
 Xanth
-Xcrawl Earth
+Xcrawl
 Xen
 Xenon
 Xoroth
