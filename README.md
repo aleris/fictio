@@ -6,7 +6,7 @@ Builds configurable Marcov chain models from list of names and generates random 
 
 ## Build
 
-Builds a simple 2-gram model from a single file:
+Build a simple 2-gram model from a single file:
 
 ```typescript
 const cities500Names = dataFileLoader.load('cities500Names.txt')
@@ -14,6 +14,25 @@ const chain = new Builder(2)
   .from(cities500Names)
   .build()
 ```
+
+Build a more complex 4-gram model from two files:
+
+```typescript
+const fictionalPlaceNames = new Builder(4)
+  .from(cities500Names)
+  // the second file is much smaller than the first so a weight is used to give it more importance
+  .from(fictionalPlaceNames, 100000)
+  // scales the counters stored for each token so that the values are smaller
+  // also helps to reduce object size on disk
+  // only makes sense for big files with lots of letters
+  .scale(10000)
+  // optimize makes the leaf nodes numbers, instead of objects,
+  // in the resulting object model, to reduce the size on disk
+  .optimize()
+  .build()
+```
+
+The model size is growing exponentially with n-grams parameter and depends also on the training data.
 
 ## Generate 
 
@@ -38,7 +57,7 @@ Run `npm run start` to execute this file and generate example models.
 
 Use `Generator` to load a prebuild model directly form the `typescript` file and generate random names.
 
-See `example.test.ts` for an example on how to use the generator.
+See `./src/example.test.ts` for an example on how to use directly the generator.
 
 ## Tests
 
