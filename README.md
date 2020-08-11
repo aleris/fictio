@@ -1,8 +1,8 @@
 # FICTIO
 
-Random fictional names generator.
+Random fictional names generator written in Typescript.
 
-Builds configurable Marcov chain models from list of names and generates random names.
+Builds configurable Marcov chain models from list of training strings and generates random names.
 
 ## Build
 
@@ -43,12 +43,22 @@ const nameGenerator = new Generator(chain)
 console.log(nameGenerator.next())
 ```
 
+Names in the training data:
+- Aereth
+- Dosadi
+- Halvmork
+
+Example of generated names:
+- Amiamar
+- Ellicon
+- Trishnu
+
 ## How to use it
 
 1. Build the model and save it to disk
 
 Use `Builder` to generate a model from a list of strings like in the examples included in the `./data` folder.
-Use `ChainObjectWriter` to write the model to disk as a `typescript` file
+Use `ChainObjectWriter` to write the model to disk as a const object in a `typescript` file. 
 
 See `./src/build.ts` for examples of how to build models.
 Run `npm run start` to execute this file and generate example models.
@@ -57,7 +67,7 @@ Run `npm run start` to execute this file and generate example models.
 
 Use `Generator` to load a prebuild model directly form the `typescript` file and generate random names.
 
-See `./src/example.test.ts` for an example on how to use directly the generator.
+See `./src/example.test.ts` for an example on how to directly use the generator.
 
 ## Tests
 
