@@ -35,8 +35,8 @@ export class Generator {
         characters.push(character)
       }
       const rawName = characters.join('')
-      const cleanedName = this.clean(rawName)
-      const capitalizedName = this.capitalize(cleanedName)
+      const cleanedName = Generator.clean(rawName)
+      const capitalizedName = Generator.capitalize(cleanedName)
       parts.push(capitalizedName)
     }
     return parts.join(' ')
@@ -44,9 +44,9 @@ export class Generator {
 
   private nextToken(key: string, history: string[] = []): string {
     let element = this.chain[key] as Element
-    let path = this.tail(history, this.chain.nGrams - 1)
+    let path = Generator.tail(history, this.chain.nGrams - 1)
     while (0 < path.length) {
-      let pointerElement = this.atPath(element, path)
+      let pointerElement = Generator.atPath(element, path)
       if (undefined != pointerElement) {
         element = pointerElement
         break
@@ -56,7 +56,7 @@ export class Generator {
     return ElementPicker.randomPick(element)
   }
 
-  private atPath(root: Element, path: string[]): Element | undefined {
+  private static atPath(root: Element, path: string[]): Element | undefined {
     let element = root
     for (let token of path) {
       element = element[token] as Element
@@ -67,18 +67,18 @@ export class Generator {
     return element
   }
 
-  private tail(a: any[], n: number): any[] {
+  private static tail(a: any[], n: number): any[] {
     if (a.length <= n) {
       return a
     }
     return a.slice(a.length - n, a.length)
   }
 
-  private capitalize(name: string): string {
+  private static capitalize(name: string): string {
     return name[0].toUpperCase() + name.substr(1)
   }
 
-  private clean(name: string) {
+  private static clean(name: string) {
     if (name.match(/.+?[\-']/)) {
       return name.substr(0, name.length - 1)
     }
