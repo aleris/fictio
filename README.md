@@ -43,15 +43,22 @@ const nameGenerator = new Generator(chain)
 console.log(nameGenerator.next())
 ```
 
-Names in the training data:
+Examples in the training data:
 - Aereth
 - Dosadi
 - Halvmork
 
-Example of generated names:
+Examples of generated names:
 - Amiamar
 - Ellicon
+- Hooletaluna
 - Trishnu
+- Pyrrhia
+
+But also, (albeit for lower n-grams):
+- Kanggemervadebikaynieza 🤔
+- Fureraywauiu 😵
+- Acaskagnyeserwer 🥺
 
 ## How to use it
 
