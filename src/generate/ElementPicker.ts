@@ -1,8 +1,8 @@
-import { ChainKeys } from '../core/ChainKeys'
-import { Element } from '../core/Element'
+import { OptimizedElement } from '../core/OptimizedElement'
+import { ElementUtils } from '../core/ElementUtils'
 
 /**
- * Chain element picker.
+ * Model element picker.
  */
 export class ElementPicker {
   /**
@@ -10,14 +10,15 @@ export class ElementPicker {
    * @param element the element that has sub-elements from which to choose.
    * @returns the picked token
    */
-  static randomPick(element: Element): string {
+  static randomPick(element: OptimizedElement): string {
     // The element contains counters not probabilities directly it uses the following algorithm:
     // 1. makes a list of key values pairs where the key is the token and the value is the counter
-    // 2. sort the list in descending order of value (counter)
+    // 2. sortByValueDescending the list in descending order of value (counter)
     // 3. pick a random index between o and total counts of all child counts
     // 4. iterate the list and add the count of each element until the sum is higher than the picked index
-    const t = element[ChainKeys.ChildrenTotal] as number
-    const l = this.sort(this.flatten(element))
+    const flatList = ElementUtils.asKeyValueList(element)
+    const t = flatList.map(e => e.v).reduce((p, c) => p + c, 0)
+    const l = ElementUtils.sortByValueDescending(flatList)
     const i = Math.random() * t
     let a = 0
     for (let n of l) {
@@ -27,23 +28,5 @@ export class ElementPicker {
       }
     }
     return l[l.length - 1].k
-  }
-
-  private static sort(flatList: {k: string, v: number}[]) {
-    return flatList.sort((a, b) => b.v - a.v)
-  }
-
-  private static flatten(element: Element): {k: string, v: number}[] {
-    return ChainKeys.filterNonElementKeys(element).map(k => ({k, v: this.value(element, k) }))
-  }
-
-  private static value(element: Element, key: string): number {
-    let childElement = element[key]
-    if (typeof childElement === 'number') {
-      // the leafs contains directly numbers
-      return childElement
-    } else {
-      return childElement[ChainKeys.Count] as number
-    }
   }
 }

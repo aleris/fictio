@@ -4,11 +4,11 @@ describe('ElementPicker', () => {
 
   describe('randomPick returns elements with correct probability', () => {
 
-    test('from element leafs ', () => {
-      const e = { C: 2, T: 100, a: 5, b: 50, c: 20, d: 25 }
+    test('from element leafs', () => {
+      const e = { C: 2, a: 5, b: 50, c: 20, d: 25 }
       const result = {a: 0, b: 0, c: 0, d: 0} as { [key: string]: number }
       const iter = 100
-      for (let i = 0; i !== e.T * iter; i++) {
+      for (let i = 0; i !== 100 * iter; i++) {
         result[ElementPicker.randomPick(e)] += 1 / iter
       }
       expect(result.a).toBeGreaterThan(3)
@@ -23,14 +23,13 @@ describe('ElementPicker', () => {
 
     test('from intermediary elements', () => {
       const e = {
-        C: 71,
-        T: 100,
-        a: {C: 25, T: 100, c: {C: 75, T: 0}},
-        b: {C: 75, T: 0}
+        C: 17,
+        a: {C: 25, c: {C: 75}},
+        b: {C: 75}
       }
       const result = {a: 0, b: 0} as { [key: string]: number }
       const iter = 100
-      for (let i = 0; i !== e.T * iter; i++) {
+      for (let i = 0; i !== 100 * iter; i++) {
         result[ElementPicker.randomPick(e)] += 1 / iter
       }
       expect(result.a).toBeGreaterThan(23)

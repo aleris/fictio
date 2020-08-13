@@ -1,9 +1,9 @@
 /**
  * A hierarchical chain element for modeling Marcov chains used in {@link Chain}
  */
-export interface Element {
+export interface OptimizedElement {
   /**
    * A sub-element of this element
    */
-  [key: string]: Element | number
+  [key: string]: OptimizedElement | number
 }

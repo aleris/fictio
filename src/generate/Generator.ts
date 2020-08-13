@@ -1,6 +1,6 @@
-import { Chain} from '../core/Chain'
-import { ChainKeys } from '../core/ChainKeys'
-import { Element } from '../core/Element'
+import { OptimizedElement } from '../core/OptimizedElement'
+import { OptimizedModel } from '../core/OptimizedModel'
+import { ModelKeys } from '../core/ModelKeys'
 import { ElementPicker } from './ElementPicker'
 
 /**
@@ -8,10 +8,10 @@ import { ElementPicker } from './ElementPicker'
  */
 export class Generator {
   /**
-   * Creates a generator with the specified {@link Chain} model.
-   * @param chain the model to use
+   * Creates a generator with the specified {@link OptimizedModel} model.
+   * @param model the model to use
    */
-  constructor(private chain: Chain) { }
+  constructor(private model: OptimizedModel) { }
 
   /**
    * Randomly generates a new name.
@@ -24,14 +24,14 @@ export class Generator {
    * @returns a string representing a random name generated based on the model
    */
   next(multipleParts = false): string {
-    const partsCount = multipleParts ? Number(this.nextToken(ChainKeys.Parts)) : 1
+    const partsCount = multipleParts ? Number(this.nextToken(ModelKeys.Parts)) : 1
     const parts = []
     while (parts.length < partsCount) {
-      const length = Number(this.nextToken(ChainKeys.Lengths))
-      const firstCharacter = this.nextToken(ChainKeys.StartLetters)
+      const length = Number(this.nextToken(ModelKeys.Lengths))
+      const firstCharacter = this.nextToken(ModelKeys.StartLetters)
       const characters = [firstCharacter]
       while (characters.length < length) {
-        const character = this.nextToken(ChainKeys.Elements, characters)
+        const character = this.nextToken(ModelKeys.Elements, characters)
         characters.push(character)
       }
       const rawName = characters.join('')
@@ -43,8 +43,8 @@ export class Generator {
   }
 
   private nextToken(key: string, history: string[] = []): string {
-    let element = this.chain[key] as Element
-    let path = Generator.tail(history, this.chain.nGrams - 1)
+    let element = this.model[key] as OptimizedElement
+    let path = Generator.tail(history, this.model[ModelKeys.NGrams] as number - 1)
     while (0 < path.length) {
       let pointerElement = Generator.atPath(element, path)
       if (undefined != pointerElement) {
@@ -56,10 +56,10 @@ export class Generator {
     return ElementPicker.randomPick(element)
   }
 
-  private static atPath(root: Element, path: string[]): Element | undefined {
+  private static atPath(root: OptimizedElement, path: string[]): OptimizedElement | undefined {
     let element = root
     for (let token of path) {
-      element = element[token] as Element
+      element = element[token] as OptimizedElement
       if (element === undefined) {
         return undefined
       }

@@ -1,9 +1,9 @@
-import { Element } from './Element'
+import { ElementNode } from './ElementNode'
 
 /**
  * Model data structure for the Markov chain.
  */
-export interface Chain extends Element {
+export interface Model extends ElementNode {
   /**
    * n-grams used for generating this model
    */

@@ -1,28 +1,31 @@
 import * as fs from 'fs'
 import * as util from 'util'
-import { Chain } from './core/Chain'
+import { Model } from './core/Model'
 import { DataFileLoader } from './build/DataFileLoader'
 import { Builder } from './build/Builder'
-import { ChainObjectWriter } from './build/ChainObjectWriter'
+import { ModelObjectWriter } from './build/ModelObjectWriter'
 import { Generator } from './generate/Generator'
+import { ModelSizeOptimizer } from './build/ModelSizeOptimizer'
 
 util.inspect.defaultOptions.depth = null
 
 /**
  * Writes the model to disk and shows some examples generated with it as well as the file size.
  * @param modelName
- * @param chain
+ * @param model
  */
-function writeModel(modelName: string, chain: Chain) {
+function writeModel(modelName: string, model: Model) {
+  const optimized = ModelSizeOptimizer.optimize(model, 9999)
+
   console.log(`Model ${modelName}`)
   console.log('\tExample generated names:')
-  const nameGenerator = new Generator(chain)
+  const nameGenerator = new Generator(optimized)
   for (let i = 0; i !== 5; i++) {
     console.log(`\t\t${nameGenerator.next()}`)
   }
 
   const modelPath = `./gen/${modelName}.ts`
-  ChainObjectWriter.writeAsTypescriptExportedObject(modelName, modelPath, chain)
+  ModelObjectWriter.writeAsTypescriptObject(modelName, modelPath, optimized)
   const stats = fs.statSync(modelPath)
   const fileSizeInBytes = stats["size"]
   console.log(`\tModel ${modelName} written to ${modelPath}, has ${fileSizeInBytes} bytes\n`)
@@ -39,7 +42,6 @@ const fictionalPlaceNames = dataFileLoader.load(fictionalPlaceNamesFile)
 console.log(`Building model from ${fictionalPlaceNamesFile} with 2-grams`)
 const fictionalPlaceNames2 = new Builder(2)
   .from(cities500Names)
-  .optimize() // optimize makes the leaf nodes numbers instead of objects to reduce object size on disk
   .build()
 writeModel('fictionalPlaceNames2', fictionalPlaceNames2)
 
@@ -48,11 +50,6 @@ writeModel('fictionalPlaceNames2', fictionalPlaceNames2)
 console.log(`Building model from ${cities500NamesFile} with 3-grams`)
 const cities500Names3 = new Builder(3)
   .from(cities500Names)
-  // scales the counters stored for each token so that the values are smaller
-  // also helps to reduce object size on disk
-  // only makes sense for big files with lots of letters
-  .scale(10000)
-  .optimize()
   .build()
 writeModel('cities500Names3', cities500Names3)
 
@@ -64,8 +61,6 @@ console.log(`Building model from ${cities500NamesFile} and ${fictionalPlaceNames
 const fictionalPlaceNames4 = new Builder(4)
   .from(cities500Names)
   // the second file is much smaller than the first so a weight is used to give it more importance
-  .from(fictionalPlaceNames, 100000)
-  .scale(10000)
-  .optimize()
+  .from(fictionalPlaceNames, 10000)
   .build()
 writeModel('fictionalPlaceNames4', fictionalPlaceNames4)
