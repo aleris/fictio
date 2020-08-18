@@ -6,14 +6,15 @@ import { OptimizedModel } from '../core/OptimizedModel'
  */
 export class ModelObjectWriter {
   /**
-   * Writes the {@link OptimizedModel} model to disk as a typescript object to the given path with the provided name.
+   * Writes the {@link OptimizedModel} model to disk as an object to the given path with the provided name.
    * @param name name of the model used for the object name in the typescript generated code
    * @param path where to write the model file
    * @param model the model to write
+   * @param writeExport true to write 'export '
    */
-  static writeAsTypescriptObject(name: string, path: string, model: OptimizedModel) {
+  static writeAsCodeFile(name: string, path: string, model: OptimizedModel, writeExport = true) {
     const str = this.asString(model)
-    const code = `export const ${name} = ${str}`
+    const code = `${writeExport ? 'export ' : ''}const ${name} = ${str}`
     fs.writeFileSync(path, code)
   }
 

@@ -19,7 +19,7 @@ export class DataFileLoader {
   }
 
   private isBlankLine(s: string) {
-    return s.match(/\s+/)
+    return s === '' || /\s+/.test(s)
   }
 
   private isCommentLine(s: string) {

@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as util from 'util'
-import { Model } from './core/Model'
+import { Model } from './build/Model'
 import { DataFileLoader } from './build/DataFileLoader'
 import { Builder } from './build/Builder'
 import { ModelObjectWriter } from './build/ModelObjectWriter'
@@ -25,7 +25,7 @@ function writeModel(modelName: string, model: Model) {
   }
 
   const modelPath = `./gen/${modelName}.ts`
-  ModelObjectWriter.writeAsTypescriptObject(modelName, modelPath, optimized)
+  ModelObjectWriter.writeAsCodeFile(modelName, modelPath, optimized)
   const stats = fs.statSync(modelPath)
   const fileSizeInBytes = stats["size"]
   console.log(`\tModel ${modelName} written to ${modelPath}, has ${fileSizeInBytes} bytes\n`)
