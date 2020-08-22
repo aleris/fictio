@@ -4,7 +4,7 @@ describe('ElementUtils', () => {
 
   test('asKeyValueList', () => {
     const e = { C: 111, a: { C: 6}, b: { C: 2 } }
-    const r = ElementUtils.asKeyValueList(e)
+    const r = ElementUtils.asKeyValueArray(e)
 
     expect(r.length).toStrictEqual(2)
     expect(r).toMatchObject([ {k: 'a', v: 6}, {k: 'b', v: 2} ])

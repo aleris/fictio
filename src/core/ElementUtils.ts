@@ -1,6 +1,9 @@
 import { ModelKeys } from './ModelKeys'
 import { OptimizedElement } from './OptimizedElement'
 
+/**
+ * Utilities for working with {@link OptimizedElement}
+ */
 export class ElementUtils {
   /**
    * Returns a list of keys in the element except {@link Count} and {@link NGrams}.
@@ -10,16 +13,24 @@ export class ElementUtils {
     return Object.keys(element).filter(k => this.isNonElementKey(k))
   }
 
-  private static isNonElementKey(k: string): boolean {
-    return k !== ModelKeys.Count && k !== ModelKeys.NGrams
-  }
-
-  static asKeyValueList(element: OptimizedElement): {k: string, v: number}[] {
+  /**
+   * Returns sub-elements map nodes as a key-value array
+   * @param element
+   */
+  static asKeyValueArray(element: OptimizedElement): {k: string, v: number}[] {
     return ElementUtils.filterNonElementKeys(element).map(k => ({k, v: this.extractValue(element, k) }))
   }
 
-  static sortByValueDescending(flatList: {k: string, v: number}[]) {
-    return flatList.sort((a, b) => b.v - a.v)
+  /**
+   * Sorts an array of key-values objects descending by value.
+   * @param list
+   */
+  static sortByValueDescending(list: {k: string, v: number}[]) {
+    return list.sort((a, b) => b.v - a.v)
+  }
+
+  private static isNonElementKey(k: string): boolean {
+    return k !== ModelKeys.Count && k !== ModelKeys.NGrams
   }
 
   private static extractValue(element: OptimizedElement, key: string): number {
