@@ -2,7 +2,9 @@
   "name": "fictio",
   "version": "1.0.0",
   "description": "",
-  "main": "train.js",
+  "main": "dist/index.js",
+  "type": "dist/index.d.ts",
+  "module": "src/generate/Generator.ts",
   "engines": {
     "node": ">=10"
   },

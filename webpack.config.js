@@ -9,12 +9,15 @@ module.exports = {
     target: 'node',
 
     entry: {
-        'build': ['./build.ts']
+        'build': ['./build.ts'],
+        'index': ['./generate/Generator.ts']
     },
     
     output: {
         filename: '[name].js',
-        path: DESTINATION
+        path: DESTINATION,
+        library: '[name]',
+        libraryTarget: 'umd'
     },
 
     resolve: {
