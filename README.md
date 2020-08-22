@@ -35,6 +35,10 @@ The generator uses a size optimized model which can be obtained like this:
 const optimizedModel = ModelSizeOptimizer.optimize(model)
 ```
 
+*Note*: the generated model is typescript code like `export const cities500Names3 = {...}`, however the javascript
+part can be easily extracted. Obviously if this is later used in a build pipeline (transpiled, etc.) the size will be
+affected accordingly.   
+
 ## Generate 
 
 Generate names from a model
@@ -57,9 +61,9 @@ Examples of generated names:
 - Pyrrhia
 
 But also, (albeit for lower n-grams):
-- Fureraywauiu 😵
-- Acaskagnyeserwer 🤔
-- Kanggemervadebikaynieza 🥺
+- Fureraywauiu 🤔
+- Acaskagnyeserwer 🥺
+- Kanggemervadebikaynieza 😵
 
 ## How to use it
 
