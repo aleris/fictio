@@ -25,13 +25,13 @@ const fictionalPlaceNames = new Builder(4)
   .build()
 ```
 
+## Optimize model size
+
 The model size is growing exponentially with n-grams parameter and depends also on the training data.
 
-## Optimize model
-
-The generator uses the optimized model which can be obtained like this:
+The generator uses a size optimized model which can be obtained like this:
  
-```
+```typescript
 const optimizedModel = ModelSizeOptimizer.optimize(model)
 ```
 
@@ -57,23 +57,25 @@ Examples of generated names:
 - Pyrrhia
 
 But also, (albeit for lower n-grams):
-- Kanggemervadebikaynieza 🤔
 - Fureraywauiu 😵
-- Acaskagnyeserwer 🥺
+- Acaskagnyeserwer 🤔
+- Kanggemervadebikaynieza 🥺
 
 ## How to use it
 
-1. Build the model and save it to disk
+**Build the model and save it to disk:**
 
 Use `Builder` to generate a model from a list of strings like in the examples included in the `./data` folder.
-Use `ModelSizeOptimizer` to shrink the model object. 
+
+Use `ModelSizeOptimizer` to shrink the model object.
+ 
 Use `ChainObjectWriter` to write the model to disk as a const object in a `typescript` file. The same can be used
 for `javascript` without the export keyword.  
 
 See `./src/build.ts` for examples of how to build models.
 Run `npm run start` to execute this file and generate example models.
 
-2. Generate names
+**Generate names:**
 
 Use `Generator` to load a prebuild optimized model directly form a file and generate random names.
 
