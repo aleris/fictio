@@ -4,7 +4,7 @@ import { ModelKeys } from '../core/ModelKeys'
 import { ElementPicker } from './ElementPicker'
 
 /**
- * Generates names using a prebuild model.
+ * Generates names using a prebuild Markov chain model.
  */
 export class Generator {
   /**

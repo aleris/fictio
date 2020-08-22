@@ -3,10 +3,17 @@ import { Model } from './Model'
 import { ElementNode } from './ElementNode'
 import { NGramGenerator } from './NGramGenerator'
 
+/**
+ * Markov chain model builder for name generation.
+ */
 export class Builder {
   private readonly model: Model
   private readonly trainData: { tokens: string[], weight: number }[] = []
 
+  /**
+   * Creates a new model builder.
+   * @param nGrams number of grams to use for source tokens train data.
+   */
   constructor(nGrams: number) {
     this.model = {
       nGrams,
@@ -19,8 +26,8 @@ export class Builder {
 
   /**
    * Updates the model from a list of tokens.
-   * @param tokens a list of tokens.
-   * @param weight weight with which to multiply each occurrence of a letter in the model.
+   * @param tokens a list of training strings.
+   * @param weight weight with which to multiply each occurrence of a letter in the model, defaults to 1.
    * @returns this builder
    */
   from(tokens: string[], weight = 1): Builder {

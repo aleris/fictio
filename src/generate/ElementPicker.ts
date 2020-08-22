@@ -17,16 +17,16 @@ export class ElementPicker {
     // 3. pick a random index between o and total counts of all child counts
     // 4. iterate the list and add the count of each element until the sum is higher than the picked index
     const flatList = ElementUtils.asKeyValueList(element)
-    const t = flatList.map(e => e.v).reduce((p, c) => p + c, 0)
-    const l = ElementUtils.sortByValueDescending(flatList)
-    const i = Math.random() * t
-    let a = 0
-    for (let n of l) {
-      a += n.v
-      if (i < a) {
+    const totalCount = flatList.map(e => e.v).reduce((p, c) => p + c, 0)
+    const listDescending = ElementUtils.sortByValueDescending(flatList)
+    const pickIndex = Math.random() * totalCount
+    let countAccumulator = 0
+    for (let n of listDescending) {
+      countAccumulator += n.v
+      if (pickIndex < countAccumulator) {
         return n.k
       }
     }
-    return l[l.length - 1].k
+    return listDescending[listDescending.length - 1].k
   }
 }
