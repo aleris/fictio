@@ -9,7 +9,7 @@ module.exports = {
     target: 'node',
 
     entry: {
-        'build': ['./build.ts'],
+        'example-build': ['./example-build.ts'],
         'index': ['./generate/Generator.ts']
     },
     
