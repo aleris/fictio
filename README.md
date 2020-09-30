@@ -1,6 +1,6 @@
 # FICTIO
 
-Random fictional names generator using Markov chain written in Typescript.
+Random fictional names generator using Markov chains written in Typescript.
 
 Builds configurable models from list of training strings and generates random names from pre-build models.
 
